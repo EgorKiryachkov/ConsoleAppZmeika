@@ -10,6 +10,7 @@ namespace ConsoleAppZmeika
     {
         static void Main(string[] args)
         {
+            Console.CursorVisible = false; //убирает мерцание курсора
             Console.SetWindowSize(80, 25); //фикс ошибки с размером окна
             Console.SetBufferSize(80, 25);
             HorizontalLine upLine = new HorizontalLine(0, 78, 0, '+');
@@ -22,7 +23,8 @@ namespace ConsoleAppZmeika
             rightLine.Drow();
 
             Point p = new Point(4, 5, '*');
-            p.Draw();
+            Zmeika zmeika = new Zmeika(p, 4, Direction.RIGHT);
+            zmeika.Drow();
         }
     }
 }
