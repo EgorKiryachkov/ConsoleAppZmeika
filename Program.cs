@@ -27,15 +27,29 @@ namespace ConsoleAppZmeika
             Zmeika zmeika = new Zmeika(p, 4, Direction.RIGHT);
             zmeika.Draw();
 
+            FoodCreator foodCreator = new FoodCreator(80, 25, '$');
+            Point food = foodCreator.CreateFood();
+            food.Draw();
+
             while(true)
             {
-                if(Console.KeyAvailable)
+                if(zmeika.Eat(food))
+                {
+                    food = foodCreator.CreateFood();
+                    food.Draw();
+                }
+                else
+                {
+                    zmeika.Move();
+                }
+
+                Thread.Sleep(100);
+
+                if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
                     zmeika.HandleKey(key.Key);
                 }
-                Thread.Sleep(100);
-                zmeika.Move();
             }
         }
     }
