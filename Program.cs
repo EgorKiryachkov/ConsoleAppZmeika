@@ -18,31 +18,25 @@ namespace ConsoleAppZmeika
             HorizontalLine downLine = new HorizontalLine(0, 78, 24, '+');
             VerticalLine leftLine = new VerticalLine(0, 24, 0, '+');
             VerticalLine rightLine = new VerticalLine(0, 24, 78, '+');
-            upLine.Drow();
-            downLine.Drow();
-            leftLine.Drow();
-            rightLine.Drow();
+            upLine.Draw();
+            downLine.Draw();
+            leftLine.Draw();
+            rightLine.Draw();
 
             Point p = new Point(4, 5, '*');
-            Zmeika zmeika = new Zmeika(p, 4, Direction.DOWN);
-            zmeika.Drow();
-            zmeika.Move();
-            Thread.Sleep(300);
-            zmeika.Move();
-            Thread.Sleep(300);
-            zmeika.Move();
-            Thread.Sleep(300);
-            zmeika.Move();
-            Thread.Sleep(300);
-            zmeika.Move();
-            Thread.Sleep(300);
-            zmeika.Move();
-            Thread.Sleep(300);
-            zmeika.Move();
-            Thread.Sleep(300);
-            zmeika.Move();
-            Thread.Sleep(300);
-            zmeika.Move();
+            Zmeika zmeika = new Zmeika(p, 4, Direction.RIGHT);
+            zmeika.Draw();
+
+            while(true)
+            {
+                if(Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    zmeika.HandleKey(key.Key);
+                }
+                Thread.Sleep(100);
+                zmeika.Move();
+            }
         }
     }
 }
