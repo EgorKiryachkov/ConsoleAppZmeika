@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ConsoleAppZmeika
@@ -23,8 +24,25 @@ namespace ConsoleAppZmeika
             rightLine.Drow();
 
             Point p = new Point(4, 5, '*');
-            Zmeika zmeika = new Zmeika(p, 4, Direction.RIGHT);
+            Zmeika zmeika = new Zmeika(p, 4, Direction.DOWN);
             zmeika.Drow();
+            zmeika.Move();
+            Thread.Sleep(300);
+            zmeika.Move();
+            Thread.Sleep(300);
+            zmeika.Move();
+            Thread.Sleep(300);
+            zmeika.Move();
+            Thread.Sleep(300);
+            zmeika.Move();
+            Thread.Sleep(300);
+            zmeika.Move();
+            Thread.Sleep(300);
+            zmeika.Move();
+            Thread.Sleep(300);
+            zmeika.Move();
+            Thread.Sleep(300);
+            zmeika.Move();
         }
     }
 }

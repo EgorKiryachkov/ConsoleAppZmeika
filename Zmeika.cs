@@ -8,6 +8,8 @@ namespace ConsoleAppZmeika
 {
     class Zmeika : Figure
     {
+        Direction direction;
+
         public Zmeika(Point tail, int length, Direction direction)
         {
             pList = new List<Point>();
@@ -17,6 +19,25 @@ namespace ConsoleAppZmeika
                 p.Move(i, direction);
                 pList.Add(p);
             }
+        }
+
+        internal void Move()
+        {
+           Point tail = pList.First();
+           pList.Remove(tail);
+           Point head = GetNextPoint();
+           pList.Add(head);
+
+           tail.Clear();
+           head.Draw();
+        }
+
+        public Point GetNextPoint()
+        {
+            Point head = pList.Last();
+            Point nextPoint = new Point(head);
+            nextPoint.Move(1, direction);
+            return nextPoint;
         }
     }
 }
