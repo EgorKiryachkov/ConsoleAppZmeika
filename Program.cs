@@ -11,35 +11,22 @@ namespace ConsoleAppZmeika
     {
         static void Main(string[] args)
         {
-            VerticalLine vl = new VerticalLine(0, 10, 5, '%');
-            Draw(vl);
-
             Console.CursorVisible = false; //убирает мерцание курсора
             Console.SetWindowSize(80, 25); //фикс ошибки с размером окна
             Console.SetBufferSize(80, 25);
 
+            Walls walls = new Walls(80, 25);
+            walls.Draw();
+            
             Point p = new Point(4, 5, '*');
-            Figure fZmeika = new Zmeika(p, 4, Direction.RIGHT);
-            Draw(fZmeika);
-            Zmeika zmeika = (Zmeika)fZmeika;
+            Zmeika zmeika = new Zmeika(p, 4, Direction.RIGHT);
+            zmeika.Draw();
 
-            HorizontalLine hl = new HorizontalLine(0, 5, 6, '&');
+            FoodCreator foodCreator = new FoodCreator(80, 25, '$');
+            Point food = foodCreator.CreateFood();
+            food.Draw();
+           
 
-            List<Figure> figures = new List<Figure>();
-            figures.Add(fZmeika);
-            figures.Add(vl);
-            figures.Add(hl);
-
-            foreach (var f in figures)
-            {
-                f.Draw();
-            }
-        }
-
-        static void Draw(Figure figure)
-        {
-            figure.Draw();
-        }
             while(true)
             {
                 if(walls.IsHit(zmeika) || zmeika.IsHitTail())
